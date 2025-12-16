@@ -61,6 +61,24 @@ class AuthNotifier extends StateNotifier<User?> {
       return e.toString();
     }
   }
+
+  // Fungsi Logout
+  Future<void> Logout() async {
+    await _auth.signOut();
+  }
+
+  // Fungsi Reset Password
+  Future<String?> ResetPassword(String email) async {
+    if (email.isEmpty) return "Email Tidak Boleh Kosong";
+    if (!email.contains("@")) return "Email Tidak Valid";
+
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      return null;
+    } catch (e) {
+      return "Gagal Mengirimkan Reset Password";
+    }
+  }
 }
 
 final authProvider = StateNotifierProvider<AuthNotifier, User?>(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_riverpod/providers/auth_provider.dart';
+import 'package:project_riverpod/screens/auth/reset_password_screen.dart';
 import 'package:project_riverpod/screens/auth/signup_screen.dart';
 import 'package:project_riverpod/screens/home/home_screen.dart';
 
@@ -126,7 +127,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              // pindah ke halaman reset
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ResetPasswordScreen(),
+                                ),
+                              );
+                            },
                             child: Text(
                               "Lupa Password?",
                               style: TextStyle(color: Colors.teal),
